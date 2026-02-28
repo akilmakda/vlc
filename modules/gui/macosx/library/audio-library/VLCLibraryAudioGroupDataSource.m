@@ -290,16 +290,7 @@
         }
 
         _representedAudioGroup = representedAudioGroup;
-
-        if ([representedAudioGroup isKindOfClass:VLCMediaLibraryAlbum.class]) {
-            _currentParentType = VLCMediaLibraryParentGroupTypeAlbum;
-        } else if ([representedAudioGroup isKindOfClass:VLCMediaLibraryArtist.class]) {
-            _currentParentType = VLCMediaLibraryParentGroupTypeArtist;
-        } else if ([representedAudioGroup isKindOfClass:VLCMediaLibraryGenre.class]) {
-            _currentParentType = VLCMediaLibraryParentGroupTypeGenre;
-        } else {
-            NSAssert(1, @"Current parent type should be a valid audio group type");
-        }
+        _currentParentType = representedAudioGroup.matchingParentType;
 
         [self updateRepresentedListOfAlbums];
     }
